@@ -10,10 +10,17 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
+    <button id="Restart">Restart</button>
     <hr>
     <br>
     <!-- 3 * 3 wants to make -->
     <div id="board">
     </div>
 </body>
+<script>
+    let restart = document.getElementById("Restart");
+    restart.addEventListener("click", () => {
+  window.location.reload();
+});
+</script>
 </html>

@@ -86,6 +86,7 @@ function checkWinner() {
             for (let i = 0; i < 3; i++) {
                 let tile = document.getElementById(i.toString() + "-" + c.toString());                
                 tile.classList.add("winner");
+
             }
             gameOver = true;
             return;
@@ -97,6 +98,7 @@ function checkWinner() {
         for (let i = 0; i < 3; i++) {
             let tile = document.getElementById(i.toString() + "-" + i.toString());                
             tile.classList.add("winner");
+
         }
         gameOver = true;
         return;
@@ -112,9 +114,11 @@ function checkWinner() {
         tile = document.getElementById("1-1");                
         tile.classList.add("winner");
 
+
         //2-0
         tile = document.getElementById("2-0");
         gameover = true;
         return
     }
 }
+
