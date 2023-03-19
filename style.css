@@ -58,3 +58,11 @@ hr{
     color: black;
     cursor: pointer;
 }
+.alert > #Win{
+    color:  black;
+}
+
+#winn{
+    width: 200px;
+    margin: 0 auto;
+}

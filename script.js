@@ -3,6 +3,7 @@ var playerO = "O";
 var playerX ="X";
 var currPlayer = playerO;
 var gameOver = false ;
+let Winplayer;
 
 window.onload = function (){
     setGame();
@@ -34,9 +35,7 @@ function setGame() {
 }
 
 function setTile() {
-    if (gameOver) {
-        return;
-    }
+   
 
     let coords = this.id.split("-");    //ex) "1-2" -> ["1", "2'"]
     let r = parseInt(coords[0]);
@@ -51,13 +50,22 @@ function setTile() {
     this.innerText = currPlayer; //mark the board on html
 
     //change players
-    if (currPlayer == playerO) {
+   
+    if(gameOver){
+        Winplayer = (currPlayer==playerO?playerX:playerO)
+       
+       document.getElementById('Winn').textContent = `Player '${Winplayer}' won!`
+       document.getElementById('Win').textContent = `Turn of '${currPlayer}' Player!`;
+    //    window.location.reload();
+    }
+    else if (currPlayer == playerO) {
         currPlayer = playerX;
+       
     }
     else {
         currPlayer = playerO;
     }
-
+    document.getElementById('Win').textContent = `Turn of '${currPlayer}' Player!`;
     //check winner
     checkWinner();
 }
@@ -69,10 +77,14 @@ function checkWinner() {
         if (board[r][0] == board[r][1] && board[r][1] == board[r][2] && board[r][0] != ' ') {
             //if we found the winning row
             //apply the winner style to that row
+            
             for (let i = 0; i < 3; i++) {
+               
                 let tile = document.getElementById(r.toString() + "-" + i.toString());
                 tile.classList.add("winner");
+            
             }
+            
             gameOver = true;
             return;
         }
@@ -89,6 +101,7 @@ function checkWinner() {
 
             }
             gameOver = true;
+            
             return;
         }
     }
@@ -120,5 +133,11 @@ function checkWinner() {
         gameover = true;
         return
     }
+    if(playerX){
+        let win = document.getElementsByClassName("winner");
+        win.createElement("h1","playerX won")
+    }else{
+        let win = document.getElementsByClassName("winner");
+        win.createElement("h1","playerO won")
+    }
 }
-
