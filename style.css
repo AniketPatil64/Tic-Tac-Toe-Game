@@ -1,20 +1,171 @@
-body{
+/* CSS Variables for Themes */
+:root {
+    --bg-color: rgb(23, 21, 21);
+    --text-color: antiquewhite;
+    --accent-color: #a83caf;
+    --line-color: rgb(134, 144, 31);
+    --winner-bg: rgb(255, 255, 255);
+    --winner-text: rgb(6, 156, 21);
+    --button-bg: rgb(93, 90, 90);
+    --button-hover: chartreuse;
+    --navbar-bg: rgba(0, 0, 0, 0.8);
+    --alert-bg: #fcf8e3;
+    --alert-text: #8a6d3b;
+}
+
+.dark-mode {
+    --bg-color: rgb(23, 21, 21);
+    --text-color: antiquewhite;
+    --accent-color: #a83caf;
+    --line-color: rgb(134, 144, 31);
+    --winner-bg: rgb(255, 255, 255);
+    --winner-text: rgb(6, 156, 21);
+    --button-bg: rgb(93, 90, 90);
+    --button-hover: chartreuse;
+    --navbar-bg: rgba(0, 0, 0, 0.8);
+    --alert-bg: #fcf8e3;
+    --alert-text: #8a6d3b;
+}
+
+.light-mode {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --accent-color: #007bff;
+    --line-color: #dee2e6;
+    --winner-bg: #28a745;
+    --winner-text: white;
+    --button-bg: #6c757d;
+    --button-hover: #5a6268;
+    --navbar-bg: rgba(255, 255, 255, 0.9);
+    --alert-bg: #fff3cd;
+    --alert-text: #856404;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    background-color: rgb(23, 21, 21);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
-h1{
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 20px;
+    background-color: var(--navbar-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    gap: 20px;
+}
+
+.navbar-brand .logo {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.screen {
+    padding-top: 80px; /* Account for fixed navbar */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#start-screen h1 {
+    margin-bottom: 40px;
+    color: var(--accent-color);
+}
+
+.screen > h1 {
+    margin-bottom: 20rem;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 10px;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #8a2be2;
+}
+
+.btn-secondary {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--button-hover);
+    color: black;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-default {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+}
+
+.btn-default:hover {
+    background-color: var(--button-hover);
+}
+
+.alert {
+    background-color: var(--alert-bg);
+    color: var(--alert-text);
+    border: 1px solid #ffeeba;
+    border-radius: 5px;
+    padding: 15px;
+    margin: auto;
     margin-top: 50px;
-    color: #a83caf;
+    width: 300px;
 }
-hr{
+
+h1 {
+    margin-top: 50px;
+    color: var(--accent-color);
+}
+
+hr {
     width: 500px;
     height: 2px;
-    background-color: rgb(134, 144, 31);
+    background-color: var(--line-color);
 }
 
 /* for board structure */
-#board{
+#board {
     width: 450px;
     height: 450px;
     margin: 0 auto;
@@ -26,9 +177,8 @@ hr{
 .tile {
     width: 147px;
     height: 147px;
-
     /* Text */
-    color: antiquewhite;
+    color: var(--text-color);
     font-size: 150px;
     display: flex;
     justify-content: center; 
@@ -36,33 +186,192 @@ hr{
 }
 
 .winner {
-    background-color: rgb(255, 255, 255);
-    color: rgb(6, 156, 21);
+    background-color: var(--winner-bg);
+    color: var(--winner-text);
 }
-
 
 .horizontal-line {
-    border-bottom: 3px solid rgb(134, 144, 31);
+    border-bottom: 3px solid var(--line-color);
 }
-.vertical-line{
-    border-right: 3px solid rgb(134, 144, 31);
+
+.vertical-line {
+    border-right: 3px solid var(--line-color);
 }
-#Restart{
+
+#Restart {
     text-align: center;
-    color: aliceblue;
+    color: var(--text-color);
     padding: 10px 20px;
-    background-color: rgb(93, 90, 90);
+    background-color: var(--button-bg);
 }
-#Restart:hover{
-    background-color: chartreuse;
+
+#Restart:hover {
+    background-color: var(--button-hover);
     color: black;
     cursor: pointer;
 }
-.alert > #Win{
-    color:  black;
+
+.alert > #Win {
+    color: var(--alert-text);
 }
 
-#winn{
+#winn {
     width: 200px;
     margin: 0 auto;
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.modal-header .close {
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 8px 15px;
+        gap: 10px;
+    }
+    
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .screen {
+        padding-top: 70px;
+    }
+    
+    #board {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .tile {
+        width: 97px;
+        height: 97px;
+        font-size: 120px;
+    }
+    
+    h1 {
+        font-size: 28px;
+        margin-top: 20px;
+    }
+    
+    .game-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .alert {
+        width: 280px;
+        font-size: 14px;
+    }
+    
+    hr {
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px 10px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .navbar-brand img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    #board {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .tile {
+        width: 80px;
+        height: 80px;
+        font-size: 100px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .alert {
+        width: 240px;
+        font-size: 12px;
+    }
+    
+    hr {
+        width: 250px;
+    }
+}
+
+/* Additional responsive styles */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px 10px;
+        gap: 10px;
+    }
+    
+    .navbar-brand .logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .screen {
+        padding-top: 70px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+    
+    .game-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    #board {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .tile {
+        width: 97px;
+        height: 97px;
+        font-size: 120px;
+    }
+    
+    .alert {
+        width: 280px;
+        font-size: 14px;
+    }
+    
+    hr {
+        width: 300px;
+    }
 }

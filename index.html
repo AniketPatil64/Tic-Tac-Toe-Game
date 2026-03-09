@@ -14,27 +14,52 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="./assets/game-logo.png" width="50px" height="50px" alt="Tic Tac Toe Logo" class="logo">
+        </div>
+        <button id="theme-toggle" class="btn btn-secondary">Dark Mode: ON</button>
+    </nav>
     
-    <div class="alert alert-warning" id="Winn">  
-    <div id="Win">Turn of 'O' Player!</div>
+    <div id="start-screen" class="screen">
+        <h1 style="margin-top: 40px;">Welcome to Tic Tac Toe</h1>
+        <div class="game-options">
+            <button id="play-computer-btn" class="btn btn-primary">Play with Computer</button>
+            <button id="play-manual-btn" class="btn btn-success">Play with Friend</button>
+        </div>
     </div>
-    <button id="Restart">Restart</button>
     
-    <hr>
-    <br>
-    <!-- 3 * 3 wants to make -->
-    <div id="board">
+    <div id="game-screen" class="screen" style="display: none;">
+        <div class="alert alert-warning" id="Winn">  
+            <div id="Win">Turn of 'O' Player!</div>
+        </div>
+        <button id="exit-btn" class="btn btn-danger">Exit</button>
+        
+        <hr>
+        <br>
+        <!-- 3 * 3 wants to make -->
+        <div id="board">
+        </div>
     </div>
     
-    
-      
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Game Over!</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="winner-message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="play-again-btn">Play Again</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </body>
-<script>
-    let restart = document.getElementById("Restart");
-    restart.addEventListener("click", () => {
-  window.location.reload();
-});
-</script>
 </html>
